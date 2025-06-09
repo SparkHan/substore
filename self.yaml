@@ -1,0 +1,688 @@
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+profile:
+    store-selected: true
+    store-fake-ip: true
+sniffer:
+    enable: true
+    sniff:
+        HTTP:
+            ports: [80, 8080-8880]
+            override-destination: true
+        TLS:
+            ports: [443, 8443]
+        QUIC:
+            ports: [443, 8443]
+    skip-domain:
+        - "Mijia Cloud"
+        - dlg.io.mi.com
+        - "+.push.apple.com"
+tun:
+    enable: true
+    stack: system
+    device: mihomo
+    dns-hijack:
+        - any:53
+        - tcp://any:53
+    auto-route: true
+    auto-detect-interface: true
+    strict-route: true
+    endpoint-independent-nat: true
+dns:
+    enable: true
+    listen: 0.0.0.0:53
+    ipv6: false
+    prefer-h3: true
+    respect-rules: true
+    enhanced-mode: fake-ip
+    use-hosts: true
+    use-system-hosts: true
+    default-nameserver:
+        - tls://1.12.12.12
+        - 223.5.5.5
+        - 114.114.114.114
+    nameserver:
+        - https://dns.cloudflare.com/dns-query
+        - https://dns.google/dns-query
+    proxy-server-nameserver:
+        - https://223.5.5.5/dns-query
+        - https://dns.pub/dns-query
+    nameserver-policy:
+        "geosite:cn,apple-cn,category-Gamess@cn,private":
+            - https://223.5.5.5/dns-query
+            - https://dns.pub/dns-query
+    fake-ip-range: 198.18.0.1/16
+    fake-ip-filter:
+      - '*.lan'
+      - '*.localdomain'
+      - '*.example'
+      - '*.invalid'
+      - '*.localhost'
+      - '*.test'
+      - '*.local'
+      - '*.home.arpa'
+      - '*.direct'
+      - 'time.*.com'
+      - 'time.*.gov'
+      - 'time.*.edu.cn'
+      - 'time.*.apple.com'
+      - 'time-ios.apple.com'
+      - 'time1.*.com'
+      - 'time2.*.com'
+      - 'time3.*.com'
+      - 'time4.*.com'
+      - 'time5.*.com'
+      - 'time6.*.com'
+      - 'time7.*.com'
+      - 'ntp.*.com'
+      - 'ntp1.*.com'
+      - 'ntp2.*.com'
+      - 'ntp3.*.com'
+      - 'ntp4.*.com'
+      - 'ntp5.*.com'
+      - 'ntp6.*.com'
+      - 'ntp7.*.com'
+      - '*.time.edu.cn'
+      - '*.ntp.org.cn'
+      - '+.pool.ntp.org'
+      - 'time1.cloud.tencent.com'
+      - 'music.163.com'
+      - '*.music.163.com'
+      - '*.126.net'
+      - 'musicapi.taihe.com'
+      - 'music.taihe.com'
+      - 'songsearch.kugou.com'
+      - 'trackercdn.kugou.com'
+      - '*.kuwo.cn'
+      - 'api-jooxtt.sanook.com'
+      - 'api.joox.com'
+      - 'joox.com'
+      - 'y.qq.com'
+      - '*.y.qq.com'
+      - 'streamoc.music.tc.qq.com'
+      - 'mobileoc.music.tc.qq.com'
+      - 'isure.stream.qqmusic.qq.com'
+      - 'dl.stream.qqmusic.qq.com'
+      - 'aqqmusic.tc.qq.com'
+      - 'amobile.music.tc.qq.com'
+      - '*.xiami.com'
+      - '*.music.migu.cn'
+      - 'music.migu.cn'
+      - '+.msftconnecttest.com'
+      - '+.msftncsi.com'
+      - 'localhost.ptlogin2.qq.com'
+      - 'localhost.sec.qq.com'
+      - 'localhost.*.weixin.qq.com'
+      - '+.steamcontent.com'
+      - '+.srv.nintendo.net'
+      - '*.n.n.srv.nintendo.net'
+      - '+.cdn.nintendo.net'
+      - '+.stun.playstation.net'
+      - 'xbox.*.*.microsoft.com'
+      - '*.*.xboxlive.com'
+      - 'xbox.*.microsoft.com'
+      - 'xnotify.xboxlive.com'
+      - '+.battle.net'
+      - '+.battlenet.com.cn'
+      - '+.wotGames.cn'
+      - '+.wgGamess.cn'
+      - '+.wowsGames.cn'
+      - '+.wargaming.net'
+      - 'proxy.golang.org'
+      - 'stun.*.*'
+      - 'stun.*.*.*'
+      - '+.stun.*.*'
+      - '+.stun.*.*.*'
+      - '+.stun.*.*.*.*'
+      - '+.stun.*.*.*.*.*'
+      - 'heartbeat.belkin.com'
+      - '*.linksys.com'
+      - '*.linksyssmartwifi.com'
+      - '*.router.asus.com'
+      - 'mesu.apple.com'
+      - 'swscan.apple.com'
+      - 'swquery.apple.com'
+      - 'swdownload.apple.com'
+      - 'swcdn.apple.com'
+      - 'swdist.apple.com'
+      - 'lens.l.google.com'
+      - 'stun.l.google.com'
+      - 'na.b.g-tun.com'
+      - '+.nflxvideo.net'
+      - '*.square-enix.com'
+      - '*.finalfantasyxiv.com'
+      - '*.ffxiv.com'
+      - '*.ff14.sdo.com'
+      - 'ff.dorado.sdo.com'
+      - '*.mcdn.bilivideo.cn'
+      - '+.media.dssott.com'
+      - 'shark007.net'
+      - 'Mijia Cloud'
+      - '+.market.xiaomi.com'
+      - '+.cmbchina.com'
+      - '+.cmbimg.com'
+      - 'adguardteam.github.io'
+      - 'adrules.top'
+      - 'anti-ad.net'
+      - 'local.adguard.org'
+      - 'static.adtidy.org'
+      - '+.sandai.net'
+      - '+.n0808.com'
+      - '+.3gppnetwork.org'
+      - '+.uu.163.com'
+      - 'ps.res.netease.com'
+      - '+.oray.com'
+      - '+.orayimg.com'
+      - '+.gcloudcs.com'
+      - '+.gcloudsdk.com'
+geodata-mode: true
+geox-url:
+    geoip: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+    geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+proxy-groups:
+  - name: Proxies
+    type: select
+    proxies:
+      - Bage-HK | TX | LoadBalance
+      - Bage-JP | TX | LoadBalance
+      - Bage-SG | TX | LoadBalance
+      - Bage-US | TX | LoadBalance
+      - Bage-HK | 三网
+      - Bage-JP | 三网
+      - Bage-SG | 三网
+      - Bage-US | 三网
+      - DIRECT
+    url: 'http://www.google.com/generate_204'
+    interval: 300
+    timeout: 5000
+    max-failed-times: 2
+  - name: Bage-HK | TX | LoadBalance
+    type: load-balance
+    proxies:
+      - Bage-HK | TX-1
+      - Bage-HK | TX-2
+      - Bage-HK | TX-3
+      - Bage-HK | TX-4
+      - Bage-HK | TX-5
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-JP | TX | LoadBalance
+    type: load-balance
+    proxies:
+      - Bage-JP | TX-1
+      - Bage-JP | TX-2
+      - Bage-JP | TX-3
+      - Bage-JP | TX-4
+      - Bage-JP | TX-5
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-SG | TX | LoadBalance
+    type: load-balance
+    proxies:
+      - Bage-SG | TX-1
+      - Bage-SG | TX-2
+      - Bage-SG | TX-3
+      - Bage-SG | TX-4
+      - Bage-SG | TX-5
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-US | TX | LoadBalance
+    type: load-balance
+    proxies:
+      - Bage-US | TX-1
+      - Bage-US | TX-2
+      - Bage-US | TX-3
+      - Bage-US | TX-4
+      - Bage-US | TX-5
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-HK | 三网
+    type: url-test
+    proxies:
+      - Bage-HK | 电信
+      - Bage-HK | 联通
+      - Bage-HK | 移动
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-JP | 三网
+    type: url-test
+    proxies:
+      - Bage-JP | 电信
+      - Bage-JP | 联通
+      - Bage-JP | 移动
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-SG | 三网
+    type: url-test
+    proxies:
+      - Bage-SG | 电信
+      - Bage-SG | 联通
+      - Bage-SG | 移动
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Bage-US | 三网
+    type: url-test
+    proxies:
+      - Bage-US | 电信
+      - Bage-US | 联通
+      - Bage-US | 移动
+    url: "https://www.gstatic.com/generate_204"
+    interval: 1
+    timeout: 100
+    max-failed-times: 1
+  - name: Telegram
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: OpenAi
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: YouTube
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Bahamut
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Bilibili
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: ProxyMedia
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: ChinaMedia
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: GoogleFCM
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Bing
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: OneDrive
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Microsoft
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Apple
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Games
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: Don't Need
+    type: select
+    proxies:
+      - DIRECT
+    hidden: true
+  - name: AdBlack
+    type: select
+    proxies:
+      - REJECT
+    hidden: true
+  - name: Hijacking
+    type: select
+    proxies:
+      - REJECT
+    hidden: true
+  - name: Final
+    type: select
+    proxies:
+    - Proxies
+    - DIRECT
+    - HK
+    - JP
+    - SG
+    - US
+  - name: HK
+    include-all: true
+    filter: ^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)(\s|-)0\.[0-9](×|x|X)|(\s|-)(([1-9](\.\d+)?)(×|x|X))|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(Games)(\d+)?\b))).*$
+    type: url-test
+    interval: 300
+    strategy: consistent-hashing
+    hidden: true
+  - name: JP
+    include-all: true
+    filter: ^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)(\d+)?\b)))(?!.*((?i)(\s|-)0\.[0-9](×|x|X)|(\s|-)(([1-9](\.\d+)?)(×|x|X))|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(Games)(\d+)?\b))).*$
+    type: url-test
+    interval: 300
+    strategy: consistent-hashing
+    hidden: true
+  - name: US
+    include-all: true
+    filter: ^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)(\d+)?\b)))(?!.*((?i)(\s|-)0\.[0-9](×|x|X)|(\s|-)(([1-9](\.\d+)?)(×|x|X))|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(Games)(\d+)?\b))).*$
+    type: url-test
+    interval: 300
+    strategy: consistent-hashing
+    hidden: true
+  - name: SG
+    include-all: true
+    filter: ^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)(\s|-)0\.[0-9](×|x|X)|(\s|-)(([1-9](\.\d+)?)(×|x|X))|低倍率|省流|大流量|落地|家宽|自建|回国|校园|游戏|🎮|(\b(Games)(\d+)?\b))).*$
+    type: url-test
+    interval: 300
+    strategy: consistent-hashing
+    hidden: true
+
+rule-providers:
+  LocalAreaNetwork:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/LocalAreaNetwork.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  UnBan:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list
+    path: ./ruleset/UnBan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanAD:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
+    path: ./ruleset/BanAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanProgramAD:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list
+    path: ./ruleset/BanProgramAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GoogleFCM:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list
+    path: ./ruleset/GoogleFCM.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GoogleCN:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list
+    path: ./ruleset/GoogleCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  SteamCN:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list
+    path: ./ruleset/SteamCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Bing:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list
+    path: ./ruleset/Bing.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  OneDrive:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list
+    path: ./ruleset/OneDrive.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Microsoft:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list
+    path: ./ruleset/Microsoft.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Apple:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Telegram:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Telegram.list
+    path: ./ruleset/Telegram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  OpenAi:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list
+    path: ./ruleset/OpenAi.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Epic:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list
+    path: ./ruleset/Epic.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Origin:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list
+    path: ./ruleset/Origin.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Sony:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list
+    path: ./ruleset/Sony.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Steam:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Steam.list
+    path: ./ruleset/Steam.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Nintendo:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list
+    path: ./ruleset/Nintendo.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  YouTube:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list
+    path: ./ruleset/YouTube.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Bahamut:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list
+    path: ./ruleset/Bahamut.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BilibiliHMT:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list
+    path: ./ruleset/BilibiliHMT.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Bilibili:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list
+    path: ./ruleset/Bilibili.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaMedia:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list
+    path: ./ruleset/ChinaMedia.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ProxyMedia:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list
+    path: ./ruleset/ProxyMedia.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ProxyGFWlist:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list
+    path: ./ruleset/ProxyGFWlist.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaDomain:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list
+    path: ./ruleset/ChinaDomain.list
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+  ChinaCompanyIp:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ChinaCompanyIp.list
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+  Download:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list
+    path: ./ruleset/Download.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+rules:
+  - "RULE-SET,LocalAreaNetwork,Don't Need"
+  - "RULE-SET,UnBan,Don't Need"
+  - "RULE-SET,BanAD,AdBlack"
+  - "RULE-SET,BanProgramAD,Hijacking"
+  - "RULE-SET,GoogleFCM,GoogleFCM"
+  - "RULE-SET,GoogleCN,Don't Need"
+  - "RULE-SET,SteamCN,Don't Need"
+  - "RULE-SET,Bing,Bing"
+  - "RULE-SET,OneDrive,OneDrive"
+  - "RULE-SET,Microsoft,Microsoft"
+  - "RULE-SET,Apple,Apple"
+  - "RULE-SET,Telegram,Telegram"
+  - "RULE-SET,OpenAi,OpenAi"
+  - "RULE-SET,Epic,Games"
+  - "RULE-SET,Origin,Games"
+  - "RULE-SET,Sony,Games"
+  - "RULE-SET,Steam,Games"
+  - "RULE-SET,Nintendo,Games"
+  - "RULE-SET,YouTube,YouTube"
+  - "RULE-SET,Bahamut,Bahamut"
+  - "RULE-SET,BilibiliHMT,Bilibili"
+  - "RULE-SET,Bilibili,Bilibili"
+  - "RULE-SET,ChinaMedia,ChinaMedia"
+  - "RULE-SET,ProxyMedia,ProxyMedia"
+  - "RULE-SET,ProxyGFWlist,Proxies"
+  - "RULE-SET,ChinaDomain,Don't Need"
+  - "RULE-SET,ChinaCompanyIp,Don't Need"
+  - "RULE-SET,Download,Don't Need"
+  - "GEOIP,CN,Don't Need"
+  - "MATCH,Final"
